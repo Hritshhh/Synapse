@@ -337,6 +337,9 @@ Submits standard and deliberately unusual log payloads to validate the anomaly-d
 
 ---
 
-## Author
+## Authors
 
-Developed by **[Hritaansh Mehra](https://github.com/Hritshhh)**
+Developed by :
+**[Hritaansh Mehra](https://github.com/Hritshhh)**
+**[Mudit Bengani](https://github.com/Froglodyte)**
+**[Pratyush Rao](https://github.com/PratyushRao)**
