@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">Synapse technology and infrastructure stack</title>
+  <desc id="desc">Four connected layers: producers, FastAPI and intelligence, ClickHouse, and React dashboard infrastructure.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#64748b"/></marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#334155" flood-opacity=".12"/></filter>
+    <style>.title{font:700 35px Arial,sans-serif;fill:#172554}.sub{font:400 18px Arial,sans-serif;fill:#64748b}.h{font:700 24px Arial,sans-serif;fill:#172554}.s{font:400 17px Arial,sans-serif;fill:#334155}.tag{font:600 15px Arial,sans-serif;fill:#475569}.layer{filter:url(#shadow);stroke-width:2}</style>
+  </defs>
+  <rect width="1600" height="760" fill="#f8fafc"/>
+  <text x="800" y="62" text-anchor="middle" class="title">Synapse · Technology &amp; Infrastructure Stack</text>
+  <text x="800" y="94" text-anchor="middle" class="sub">A Docker-based observability platform from log producers to an interactive operations dashboard</text>
+  <rect x="85" y="145" width="1430" height="105" rx="22" fill="#dbeafe" stroke="#60a5fa" class="layer"/>
+  <text x="125" y="188" class="h">1 · Producer Layer</text><text x="125" y="218" class="s">Application nodes, infrastructure services, test clients, or log-forwarding agents submit JSON telemetry.</text>
+  <rect x="1060" y="172" width="150" height="48" rx="24" fill="#ffffff" stroke="#93c5fd"/><text x="1135" y="202" text-anchor="middle" class="tag">HTTP / JSON</text>
+  <rect x="1230" y="172" width="240" height="48" rx="24" fill="#ffffff" stroke="#93c5fd"/><text x="1350" y="202" text-anchor="middle" class="tag">Traffic simulator scripts</text>
+  <line x1="800" y1="250" x2="800" y2="285" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="85" y="285" width="1430" height="135" rx="22" fill="#fce7f3" stroke="#f472b6" class="layer"/>
+  <text x="125" y="330" class="h">2 · Ingestion &amp; Intelligence Layer</text><text x="125" y="362" class="s">Python · FastAPI · Uvicorn · Pydantic · asyncio · scikit-learn · Google Generative AI SDK</text>
+  <rect x="125" y="382" width="210" height="25" rx="12" fill="#ffffff"/><text x="230" y="401" text-anchor="middle" class="tag">Async micro-batching</text>
+  <rect x="350" y="382" width="180" height="25" rx="12" fill="#ffffff"/><text x="440" y="401" text-anchor="middle" class="tag">Isolation Forest</text>
+  <rect x="545" y="382" width="145" height="25" rx="12" fill="#ffffff"/><text x="617" y="401" text-anchor="middle" class="tag">SSE live stream</text>
+  <rect x="705" y="382" width="260" height="25" rx="12" fill="#ffffff"/><text x="835" y="401" text-anchor="middle" class="tag">Gemini incident diagnostics</text>
+  <line x1="800" y1="420" x2="800" y2="455" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="85" y="455" width="690" height="160" rx="22" fill="#fef3c7" stroke="#fbbf24" class="layer"/>
+  <text x="125" y="500" class="h">3 · Data &amp; Analytics Layer</text><text x="125" y="532" class="s">ClickHouse · clickhouse-connect · MergeTree</text><text x="125" y="562" class="s">Columnar storage, filtered log exploration, time-bucketed metrics,</text><text x="125" y="588" class="s">severity analysis, active-host and failing-service summaries.</text>
+  <rect x="840" y="455" width="675" height="160" rx="22" fill="#dcfce7" stroke="#4ade80" class="layer"/>
+  <text x="880" y="500" class="h">4 · Presentation &amp; Deployment Layer</text><text x="880" y="532" class="s">React · Vite · Tailwind CSS · Recharts · Lucide React · Nginx</text><text x="880" y="562" class="s">Interactive dashboard, live tail, charts, log explorer, and</text><text x="880" y="588" class="s">resizable AI incident-analysis drawer.</text>
+  <line x1="430" y1="615" x2="430" y2="655" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/><line x1="1180" y1="615" x2="1180" y2="655" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="85" y="655" width="1430" height="65" rx="20" fill="#eef2ff" stroke="#a5b4fc" class="layer"/>
+  <text x="800" y="695" text-anchor="middle" class="h" style="font-size:20px">Docker Compose orchestrates ClickHouse, FastAPI, and the Nginx-served React frontend as a reproducible local deployment.</text>
+</svg>

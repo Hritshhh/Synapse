@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Synapse system architecture and data flow</title>
+  <desc id="desc">Logs flow from web, authentication, and database producers into a FastAPI ingestion gateway, then to ClickHouse and a React telemetry dashboard.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#64748b"/></marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#334155" flood-opacity=".12"/></filter>
+    <style>
+      .title { font: 700 35px Arial, sans-serif; fill:#172554 } .subtitle { font: 400 18px Arial, sans-serif; fill:#64748b }
+      .node { filter:url(#shadow); stroke-width:2 } .h { font:700 22px Arial, sans-serif; fill:#172554 } .s { font:400 16px Arial, sans-serif; fill:#334155 }
+      .small { font:600 14px Arial, sans-serif; fill:#475569 } .label { font:600 15px Arial, sans-serif; fill:#475569 }
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <text x="800" y="62" text-anchor="middle" class="title">Synapse · System Architecture &amp; Data Flow</text>
+  <text x="800" y="94" text-anchor="middle" class="subtitle">Real-time log ingestion, anomaly analysis, columnar analytics, and incident diagnostics</text>
+
+  <text x="90" y="155" class="small">LOG PRODUCERS</text>
+  <rect x="80" y="175" width="260" height="120" rx="20" fill="#dbeafe" stroke="#60a5fa" class="node"/>
+  <text x="210" y="218" text-anchor="middle" class="h">Web Node</text><text x="210" y="247" text-anchor="middle" class="s">Gateway · CDN · API logs</text><text x="210" y="273" text-anchor="middle" class="small">web-node-01</text>
+  <rect x="80" y="345" width="260" height="120" rx="20" fill="#dcfce7" stroke="#4ade80" class="node"/>
+  <text x="210" y="388" text-anchor="middle" class="h">Auth Node</text><text x="210" y="417" text-anchor="middle" class="s">OAuth · JWT · session logs</text><text x="210" y="443" text-anchor="middle" class="small">auth-node-02</text>
+  <rect x="80" y="515" width="260" height="120" rx="20" fill="#fef3c7" stroke="#fbbf24" class="node"/>
+  <text x="210" y="558" text-anchor="middle" class="h">Database Node</text><text x="210" y="587" text-anchor="middle" class="s">Postgres · Redis · worker logs</text><text x="210" y="613" text-anchor="middle" class="small">db-node-03</text>
+
+  <line x1="340" y1="235" x2="470" y2="360" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="340" y1="405" x2="470" y2="405" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="340" y1="575" x2="470" y2="450" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="385" y="320" class="label">HTTP JSON</text>
+
+  <text x="505" y="155" class="small">INGESTION &amp; INTELLIGENCE GATEWAY</text>
+  <rect x="470" y="175" width="500" height="460" rx="24" fill="#fce7f3" stroke="#f472b6" class="node"/>
+  <text x="720" y="220" text-anchor="middle" class="h">FastAPI Ingestion Gateway</text>
+  <line x1="510" y1="244" x2="930" y2="244" stroke="#f9a8d4" stroke-width="2"/>
+  <rect x="515" y="270" width="410" height="64" rx="13" fill="#fff1f7" stroke="#f9a8d4"/><text x="540" y="300" class="h" style="font-size:18px">1. Normalize incoming logs</text><text x="540" y="322" class="s">timestamps, metadata, severity, IPs</text>
+  <rect x="515" y="350" width="410" height="64" rx="13" fill="#fff1f7" stroke="#f9a8d4"/><text x="540" y="380" class="h" style="font-size:18px">2. Detect unusual patterns</text><text x="540" y="402" class="s">Isolation Forest · 9 extracted features</text>
+  <rect x="515" y="430" width="410" height="64" rx="13" fill="#fff1f7" stroke="#f9a8d4"/><text x="540" y="460" class="h" style="font-size:18px">3. Buffer &amp; broadcast</text><text x="540" y="482" class="s">async queue · ring buffer · SSE clients</text>
+  <rect x="515" y="510" width="410" height="82" rx="13" fill="#fff1f7" stroke="#f9a8d4"/><text x="540" y="540" class="h" style="font-size:18px">4. Diagnose incidents</text><text x="540" y="562" class="s">Gemini AI generates root-cause</text><text x="540" y="582" class="s">analysis &amp; remediation guidance</text>
+
+  <line x1="970" y1="350" x2="1110" y2="350" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="970" y1="470" x2="1110" y2="470" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="990" y="328" class="label">micro-batch insert</text><text x="1005" y="448" class="label">live SSE events</text>
+
+  <text x="1140" y="155" class="small">STORAGE &amp; PRESENTATION</text>
+  <rect x="1110" y="175" width="400" height="190" rx="24" fill="#fef3c7" stroke="#fbbf24" class="node"/>
+  <text x="1310" y="225" text-anchor="middle" class="h">ClickHouse Analytics</text>
+  <text x="1310" y="260" text-anchor="middle" class="s">MergeTree columnar storage</text>
+  <text x="1310" y="291" text-anchor="middle" class="s">time-series · severity · service queries</text>
+  <text x="1310" y="326" text-anchor="middle" class="small">persistent log warehouse</text>
+  <rect x="1110" y="425" width="400" height="210" rx="24" fill="#dcfce7" stroke="#4ade80" class="node"/>
+  <text x="1310" y="475" text-anchor="middle" class="h">React Telemetry Dashboard</text>
+  <text x="1310" y="510" text-anchor="middle" class="s">overview metrics · charts · log explorer</text>
+  <text x="1310" y="542" text-anchor="middle" class="s">live tail · anomaly alerts · AI drawer</text>
+  <text x="1310" y="582" text-anchor="middle" class="small">served through Nginx</text>
+  <line x1="1310" y1="365" x2="1310" y2="425" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="1340" y="403" class="label">analytics API</text>
+
+  <rect x="80" y="720" width="1430" height="95" rx="18" fill="#eef2ff" stroke="#a5b4fc"/>
+  <text x="115" y="757" class="h" style="font-size:18px">Execution model</text>
+  <text x="115" y="787" class="s">Incoming logs are normalized, scored, buffered, stored, and broadcast concurrently—so the dashboard can show immediate live activity while ClickHouse powers historical analysis.</text>
+</svg>
